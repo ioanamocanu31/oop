@@ -1,6 +1,7 @@
 package fileio;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Information about a movie, retrieved from parsing the input test files
@@ -12,6 +13,14 @@ public final class MovieInputData extends ShowInput {
      * Duration in minutes of a season
      */
     private final int duration;
+    /**
+     * List of ratings for the movie
+     */
+    private final List<Double> ratings = new ArrayList<Double>();
+    /**
+     * Movie Rating
+     */
+    private Double movieRating;
 
     public MovieInputData(final String title, final ArrayList<String> cast,
                           final ArrayList<String> genres, final int year,
@@ -20,8 +29,28 @@ public final class MovieInputData extends ShowInput {
         this.duration = duration;
     }
 
+    /**
+     *
+     */
+    public void calculateRating() {
+        Double sum = 0.00;
+        for (Double rating : ratings
+        ) {
+            sum += rating;
+        }
+        movieRating = sum / ratings.size();
+    }
+
+    public List<Double> getRatings() {
+        return ratings;
+    }
+
     public int getDuration() {
         return duration;
+    }
+
+    public Double getMovieRating() {
+        return movieRating;
     }
 
     @Override

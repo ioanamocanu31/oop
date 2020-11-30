@@ -18,6 +18,10 @@ public final class SerialInputData extends ShowInput {
      * Season list
      */
     private final ArrayList<Season> seasons;
+    /**
+     * Serial Rating
+     */
+    private Double serialRating;
 
     public SerialInputData(final String title, final ArrayList<String> cast,
                            final ArrayList<String> genres,
@@ -34,6 +38,18 @@ public final class SerialInputData extends ShowInput {
 
     public ArrayList<Season> getSeasons() {
         return seasons;
+    }
+
+    /**
+     *
+     */
+    public void calculateRating() {
+        Double sum = 0.00;
+        for (Season season : seasons
+        ) {
+            sum = season.getSeasonRating();
+        }
+        serialRating = sum / numberOfSeasons;
     }
 
     @Override

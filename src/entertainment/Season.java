@@ -21,11 +21,27 @@ public final class Season {
      * List of ratings for each season
      */
     private List<Double> ratings;
+    /**
+     * Season rating as average of all ratings above
+     */
+    private Double seasonRating;
 
     public Season(final int currentSeason, final int duration) {
         this.currentSeason = currentSeason;
         this.duration = duration;
         this.ratings = new ArrayList<>();
+    }
+
+    /**
+     *
+     */
+    public void calculateRating() {
+        Double sum = 0.00;
+        for (Double rating : ratings
+        ) {
+            sum += rating;
+        }
+        seasonRating = sum / ratings.size();
     }
 
     public int getDuration() {
@@ -44,6 +60,10 @@ public final class Season {
         this.ratings = ratings;
     }
 
+    public Double getSeasonRating() {
+        return seasonRating;
+    }
+
     @Override
     public String toString() {
         return "Episode{"
@@ -53,5 +73,6 @@ public final class Season {
                 + duration
                 + '}';
     }
+
 }
 

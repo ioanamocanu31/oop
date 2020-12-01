@@ -22,6 +22,10 @@ public final class SerialInputData extends ShowInput {
      * Serial Rating
      */
     private Double serialRating;
+    /**
+     * Duration in minutes of a season
+     */
+    private Integer duration = 0;
 
     public SerialInputData(final String title, final ArrayList<String> cast,
                            final ArrayList<String> genres,
@@ -30,14 +34,6 @@ public final class SerialInputData extends ShowInput {
         super(title, year, cast, genres);
         this.numberOfSeasons = numberOfSeasons;
         this.seasons = seasons;
-    }
-
-    public int getNumberSeason() {
-        return numberOfSeasons;
-    }
-
-    public ArrayList<Season> getSeasons() {
-        return seasons;
     }
 
     /**
@@ -50,6 +46,32 @@ public final class SerialInputData extends ShowInput {
             sum = season.getSeasonRating();
         }
         serialRating = sum / numberOfSeasons;
+    }
+
+    /**
+     *
+     */
+    public void calculateDuration() {
+        for (Season season : seasons
+        ) {
+            duration += season.getDuration();
+        }
+    }
+
+    public int getNumberSeason() {
+        return numberOfSeasons;
+    }
+
+    public ArrayList<Season> getSeasons() {
+        return seasons;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public Double getSerialRating() {
+        return serialRating;
     }
 
     @Override

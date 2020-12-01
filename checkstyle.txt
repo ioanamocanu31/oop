@@ -1,14 +1,2 @@
 Starting audit...
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Rating.java:24:27: Parameter user should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Rating.java:24:47: Parameter movie should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Rating.java:24:69: Parameter rating should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Rating.java:57:28: Parameter user should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Rating.java:57:48: Parameter serial should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Rating.java:57:72: Parameter rating should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Rating.java:57:87: Parameter season should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Favorite.java:18:26: Parameter user should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/Favorite.java:18:46: Parameter title should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/View.java:18:22: Parameter user should be final. [FinalParameters]
-[ERROR] /home/ioana/Desktop/Poo/new/oop/./src/actions/command/View.java:18:42: Parameter title should be final. [FinalParameters]
 Audit done.
-Checkstyle ends with 11 errors.

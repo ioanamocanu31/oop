@@ -15,7 +15,7 @@ public final class Favorite {
      * @param user
      * @param title
      */
-    public void favorite(UserInputData user, String title) {
+    public void favorite(final UserInputData user, final String title) {
         if (user.getFavoriteMovies().contains(title)) {
             message.append("error -> ");
             message.append(title);

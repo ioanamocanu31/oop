@@ -15,7 +15,7 @@ public final class View {
      * @param user
      * @param title
      */
-    public void view(UserInputData user, String title) {
+    public void view(final UserInputData user, final String title) {
         if (user.getHistory().containsKey(title)) {
             int oldValue = user.getHistory().get(title);
             user.getHistory().replace(title, oldValue + 1);

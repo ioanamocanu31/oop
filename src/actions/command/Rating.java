@@ -21,7 +21,8 @@ public final class Rating {
      * @param movie
      * @param rating
      */
-    public void rateMovie(UserInputData user, MovieInputData movie, Double rating) {
+    public void rateMovie(final UserInputData user, final MovieInputData movie,
+                          final Double rating) {
         String title = movie.getTitle();
         if (user.getHistory().containsKey(title)) {
             if (user.getRatedShows().containsKey(title)) {
@@ -54,7 +55,8 @@ public final class Rating {
      * @param rating
      * @param season
      */
-    public void rateSerial(UserInputData user, SerialInputData serial, Double rating, int season) {
+    public void rateSerial(final UserInputData user, final SerialInputData serial,
+                           final Double rating, final int season) {
         String title = serial.getTitle();
         if (user.getHistory().containsKey(title)) {
             if (user.getRatedShows().containsKey(title)

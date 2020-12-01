@@ -15,7 +15,7 @@ public abstract class ShowInput {
     /**
      * The year the show was released
      */
-    private final int year;
+    private final Integer year;
     /**
      * Show casting
      */
@@ -24,6 +24,10 @@ public abstract class ShowInput {
      * Show genres
      */
     private final ArrayList<String> genres;
+    /**
+     * Number of views
+     */
+    private Integer views = 0;
 
     public ShowInput(final String title, final int year,
                      final ArrayList<String> cast, final ArrayList<String> genres) {
@@ -37,7 +41,7 @@ public abstract class ShowInput {
         return title;
     }
 
-    public final int getYear() {
+    public final Integer getYear() {
         return year;
     }
 
@@ -47,5 +51,19 @@ public abstract class ShowInput {
 
     public final ArrayList<String> getGenres() {
         return genres;
+    }
+
+    /**
+     * @return
+     */
+    public Integer getViews() {
+        return views;
+    }
+
+    /**
+     * @param views
+     */
+    public void setViews(final Integer views) {
+        this.views = views;
     }
 }

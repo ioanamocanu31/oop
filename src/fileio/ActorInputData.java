@@ -27,6 +27,10 @@ public final class ActorInputData {
      * awards won by the actor
      */
     private final Map<ActorsAwards, Integer> awards;
+    /**
+     * total awards won by the actor
+     */
+    private Integer totalAwards = 0;
 
     public ActorInputData(final String name, final String careerDescription,
                           final ArrayList<String> filmography,
@@ -35,6 +39,23 @@ public final class ActorInputData {
         this.careerDescription = careerDescription;
         this.filmography = filmography;
         this.awards = awards;
+    }
+
+    /**
+     *
+     */
+    public void calculateAwards() {
+        for (ActorsAwards key : awards.keySet()) {
+            totalAwards += awards.get(key);
+        }
+    }
+
+    /**
+     * @return
+     */
+    public Integer getTotalAwards() {
+        calculateAwards();
+        return totalAwards;
     }
 
     public String getName() {

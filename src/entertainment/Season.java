@@ -16,7 +16,7 @@ public final class Season {
     /**
      * Duration in minutes of a season
      */
-    private int duration;
+    private Integer duration;
     /**
      * List of ratings for each season
      */
@@ -44,7 +44,7 @@ public final class Season {
         seasonRating = sum / ratings.size();
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 

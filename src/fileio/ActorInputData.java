@@ -42,7 +42,7 @@ public final class ActorInputData {
     }
 
     /**
-     *
+     * Calculating the total number of awards for the actor
      */
     public void calculateAwards() {
         for (ActorsAwards key : awards.keySet()) {
@@ -51,7 +51,7 @@ public final class ActorInputData {
     }
 
     /**
-     * @return
+     * @return totalAwards
      */
     public Integer getTotalAwards() {
         calculateAwards();
@@ -76,10 +76,6 @@ public final class ActorInputData {
 
     public Map<ActorsAwards, Integer> getAwards() {
         return awards;
-    }
-
-    public String getCareerDescription() {
-        return careerDescription;
     }
 
     public void setCareerDescription(final String careerDescription) {

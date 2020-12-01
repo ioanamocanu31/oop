@@ -20,6 +20,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+import static common.Constants.COMMAND;
+import static common.Constants.QUERY;
+import static common.Constants.RECOMMENDATION;
+
 /**
  * The entry point to this homework. It runs the checker that tests your implementation.
  */
@@ -77,7 +81,7 @@ public final class Main {
         Writer fileWriter = new Writer(filePath2);
         JSONArray arrayResult = new JSONArray();
 
-        //TODO add here the entry point to your implementation
+        // The entry point to my implementation
         for (ActionInputData action : input.getCommands()
         ) {
             int id = action.getActionId();
@@ -86,14 +90,14 @@ public final class Main {
             ) {
                 if (user.getUsername().equals(action.getUsername())) {
                     // Commands
-                    if (action.getActionType().equals("command")) {
+                    if (action.getActionType().equals(COMMAND)) {
                         Command command = new Command();
                         command.command(user, action, input);
                         arrayResult.add(fileWriter.writeFile(id, "", command.getMessage()));
                     }
 
                     // Recommendations
-                    if (action.getActionType().equals("recommendation")) {
+                    if (action.getActionType().equals(RECOMMENDATION)) {
                         Recommendation recommendation = new Recommendation();
                         recommendation.recommendation(action, user, input);
                         arrayResult.add(fileWriter.writeFile(id, "", recommendation.getMessage()));
@@ -101,13 +105,15 @@ public final class Main {
                 }
             }
 
-            if (action.getActionType().equals("query")) {
+            // Query
+            if (action.getActionType().equals(QUERY)) {
                 Query query = new Query();
                 query.query(action, input);
                 arrayResult.add(fileWriter.writeFile(id, "", query.getMessage()));
             }
         }
 
+        //System.out.println(input.getCommands());
         fileWriter.closeJSON(arrayResult);
     }
 }

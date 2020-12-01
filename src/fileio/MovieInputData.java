@@ -31,7 +31,7 @@ public final class MovieInputData extends ShowInput {
     }
 
     /**
-     *
+     * Method that calculates the final movie rating as mean of the ratings
      */
     public void calculateRating() {
         Double sum = 0.00;
@@ -39,7 +39,9 @@ public final class MovieInputData extends ShowInput {
         ) {
             sum += rating;
         }
-        movieRating = sum / ratings.size();
+        if (ratings.size() != 0) {
+            movieRating = sum / ratings.size();
+        }
     }
 
     public List<Double> getRatings() {
@@ -50,9 +52,6 @@ public final class MovieInputData extends ShowInput {
         return duration;
     }
 
-    public Double getMovieRating() {
-        return movieRating;
-    }
 
     @Override
     public String toString() {

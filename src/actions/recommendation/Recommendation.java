@@ -7,6 +7,13 @@ import fileio.ActionInputData;
 import fileio.Input;
 import fileio.UserInputData;
 
+import static common.Constants.PREMIUM;
+import static common.Constants.SEARCH;
+import static common.Constants.STANDARD;
+
+/**
+ * Class for all recommendations
+ */
 public final class Recommendation {
     /**
      * Message to be parsed to fileWriter.writeFile
@@ -14,19 +21,25 @@ public final class Recommendation {
     private String message;
 
     /**
-     * @param action
-     * @param user
-     * @param input
+     * Method that applies all types of recommendations in Main
+     *
+     * @param action - current action
+     * @param user - for whom the recommendation is made
+     * @param input - the database
      */
     public void recommendation(final ActionInputData action, final UserInputData user,
                                final Input input) {
-        if (action.getType().equals("standard")) {
+
+        // Applying the Standard Recommendation for all types of users
+        if (action.getType().equals(STANDARD)) {
             Standard standard = new Standard();
             standard.getUnseen(user, input);
             message = standard.getMessage();
         }
-        if (action.getType().equals("search")) {
-            if (user.getSubscriptionType().equals("PREMIUM")) {
+
+        // Applying the Search Recommendation just for the premium users
+        if (action.getType().equals(SEARCH)) {
+            if (user.getSubscriptionType().equals(PREMIUM)) {
                 Search search = new Search();
                 search.search(user, input, action.getGenre());
                 search.sort();
@@ -39,13 +52,16 @@ public final class Recommendation {
                 message = "SearchRecommendation cannot be applied!";
             }
         }
+
+        // Applying the Popular Recommendation to the basic users
         if (action.getType().equals("popular")
-                && user.getSubscriptionType().equals("BASIC")) {
+                && !user.getSubscriptionType().equals(PREMIUM)) {
             message = "PopularRecommendation cannot be applied!";
         }
 
+        // Applying the Favorite Recommendation just for the premium users
         if (action.getType().equals("favorite")) {
-            if (user.getSubscriptionType().equals("BASIC")) {
+            if (!user.getSubscriptionType().equals(PREMIUM)) {
                 message = "FavoriteRecommendation cannot be applied!";
             } else {
                 Favorite favorite = new Favorite();

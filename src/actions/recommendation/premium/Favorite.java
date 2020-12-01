@@ -8,55 +8,59 @@ import fileio.UserInputData;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class for the Favorite Recommendation
+ */
 public final class Favorite {
     private Map<String, Integer> favoriteNumber;
 
     /**
-     * @param input
+     * Method for calculating how many times a movie/ serial appears in the favorite users' lists
+     *
+     * @param input - the database
      */
     public void calculateOccurrence(final Input input) {
         favoriteNumber = new HashMap<String, Integer>();
         for (MovieInputData movie : input.getMovies()
         ) {
-            Integer occurrence = 0;
+            int occurrence = 0;
             for (UserInputData user : input.getUsers()
             ) {
                 if (user.getFavoriteMovies().contains(movie.getTitle())) {
                     occurrence++;
                 }
             }
-            if (occurrence != 0) {
-                favoriteNumber.put(movie.getTitle(), occurrence);
-            }
+            favoriteNumber.put(movie.getTitle(), occurrence);
         }
         for (SerialInputData serial : input.getSerials()
         ) {
-            Integer occurrence = 0;
+            int occurrence = 0;
             for (UserInputData user : input.getUsers()
             ) {
                 if (user.getFavoriteMovies().contains(serial.getTitle())) {
                     occurrence++;
                 }
             }
-            if (occurrence != 0) {
-                favoriteNumber.put(serial.getTitle(), occurrence);
-            }
+            favoriteNumber.put(serial.getTitle(), occurrence);
         }
     }
 
     /**
-     * @param input
-     * @param user
-     * @return
+     * Method that returns show that is frequently in the favorite lists
+     * and is not already seen by the user
+     *
+     * @param input - the database
+     * @param user - for whom the recommendation is made
+     * @return the most favorite show
      */
     public String getFavorite(final Input input, final UserInputData user) {
         calculateOccurrence(input);
         for (String key : favoriteNumber.keySet()) {
-            if (!user.getFavoriteMovies().contains(key)) {
+            if (!user.getHistory().containsKey(key)) {
                 return key;
             }
         }
-        return null;
+       return null;
     }
 
 }

@@ -172,8 +172,8 @@ public final class InputLoader {
     /**
      * The method reads the actions from input file
      *
-     * @param jsonObject
-     * @param size
+     * @param jsonObject -
+     * @param size       -
      * @return A list of actions
      */
     public List<ActionInputData> readActions(final JSONObject jsonObject, final int size) {

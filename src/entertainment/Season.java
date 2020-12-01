@@ -33,9 +33,13 @@ public final class Season {
     }
 
     /**
-     *
+     * Method for calculating the seasonRating
      */
     public void calculateRating() {
+        if (ratings == null) {
+            seasonRating = 0.00;
+            return;
+        }
         Double sum = 0.00;
         for (Double rating : ratings
         ) {

@@ -8,6 +8,18 @@ import actions.query.video.Rating;
 import fileio.ActionInputData;
 import fileio.Input;
 
+import static common.Constants.AWARDS;
+import static common.Constants.FAVORITE;
+import static common.Constants.LONGEST;
+import static common.Constants.MOSTVIEWED;
+import static common.Constants.MOVIES;
+import static common.Constants.QRESULT;
+import static common.Constants.RATINGS;
+import static common.Constants.SHOWS;
+
+/**
+ * Class for all queries
+ */
 public final class Query {
     /**
      * Message to be parsed to fileWriter.writeFile
@@ -15,53 +27,60 @@ public final class Query {
     private String message;
 
     /**
-     * @param action
-     * @param input
+     * Method that applies all types of queries in Main
+     *
+     * @param action - current action
+     * @param input  - the database
      */
     public void query(final ActionInputData action, final Input input) {
-        if (action.getCriteria().equals("longest")) {
+
+        // Applying the Longest Query
+        if (action.getCriteria().equals(LONGEST)) {
             Longest longest = new Longest();
-            if (action.getObjectType().equals("movies")) {
+            if (action.getObjectType().equals(MOVIES)) {
                 longest.durationMovies(input, action);
                 longest.sortedMovies();
-                message = "Query result: " + longest.getSortedMovieTitles();
+                message = QRESULT + longest.getSortedMovieTitles();
             }
-            if (action.getObjectType().equals("shows")) {
+            if (action.getObjectType().equals(SHOWS)) {
                 longest.durationSerials(input, action);
                 longest.sortedSerials();
-                message = "Query result: " + longest.getSortedSerialTitles();
+                message = QRESULT + longest.getSortedSerialTitles();
             }
         }
 
-        if (action.getCriteria().equals("awards")) {
+        // Applying the Awards Query
+        if (action.getCriteria().equals(AWARDS)) {
             Awards awards = new Awards();
             awards.awards(input, action);
-            message = "Query result: " + awards.getActorAwards().values();
+            message = QRESULT + awards.getActorAwards().values();
         }
-
-        if (action.getCriteria().equals("most_viewed")) {
+        // Applying the MostViewed Query
+        if (action.getCriteria().equals(MOSTVIEWED)) {
             MostViewed mostViewed = new MostViewed();
             mostViewed.calculateViews(input);
             mostViewed.setMostViewed(input, action);
-            message = "Query result: " + mostViewed.getMostViewed();
+            message = QRESULT + mostViewed.getMostViewed();
         }
 
-        if (action.getCriteria().equals("ratings")) {
+        // Applying the Rating Query
+        if (action.getCriteria().equals(RATINGS)) {
             Rating rating = new Rating();
             rating.setMostRated(input, action);
-            message = "Query result: " + rating.getMostRated();
+            message = QRESULT + rating.getMostRated();
         }
 
-        if (action.getCriteria().equals("favorite")) {
-            if (action.getObjectType().equals("movies")) {
+        // Applying the Favorite Query
+        if (action.getCriteria().equals(FAVORITE)) {
+            if (action.getObjectType().equals(MOVIES)) {
                 Favorite favorite = new Favorite();
                 favorite.calculateOccurrence(input);
-                message = "Query result: " + favorite.getFavoriteMovies().keySet();
+                message = QRESULT + favorite.getFavoriteMovies().keySet();
             }
-            if (action.getObjectType().equals("shows")) {
+            if (action.getObjectType().equals(SHOWS)) {
                 Favorite favorite = new Favorite();
                 favorite.calculateOccurrence(input);
-                message = "Query result: " + favorite.getFavoriteSerials().keySet();
+                message = QRESULT + favorite.getFavoriteSerials().keySet();
             }
         }
     }

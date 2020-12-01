@@ -54,14 +54,14 @@ public abstract class ShowInput {
     }
 
     /**
-     * @return
+     * @return total views of a show
      */
     public Integer getViews() {
         return views;
     }
 
     /**
-     * @param views
+     * @param views of a show
      */
     public void setViews(final Integer views) {
         this.views = views;

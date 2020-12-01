@@ -4,8 +4,8 @@ import fileio.MovieInputData;
 import fileio.SerialInputData;
 import fileio.UserInputData;
 
-import java.util.ArrayList;
-import java.util.List;
+import static common.Constants.ERROR;
+import static common.Constants.SUCCESS;
 
 /**
  * Class for the Rating command
@@ -17,25 +17,25 @@ public final class Rating {
     private final StringBuilder message = new StringBuilder();
 
     /**
-     * @param user
-     * @param movie
-     * @param rating
+     * Method for the Rating Movie Command
+     *
+     * @param user   - the one that is rating
+     * @param movie  - the one that is rated
+     * @param rating - the grade
      */
     public void rateMovie(final UserInputData user, final MovieInputData movie,
                           final Double rating) {
         String title = movie.getTitle();
         if (user.getHistory().containsKey(title)) {
-            if (user.getRatedShows().containsKey(title)) {
-                message.append("error -> ");
+            if (user.getRatedShows().contains(title)) {
+                message.append(ERROR);
                 message.append(title);
                 message.append(" has been already rated");
             } else {
-                List<Integer> list = new ArrayList<Integer>();
-                list.add(0);
-                user.getRatedShows().put(title, list);
+                user.getRatedShows().add(title);
                 movie.getRatings().add(rating);
                 movie.calculateRating();
-                message.append("success -> ");
+                message.append(SUCCESS);
                 message.append(title);
                 message.append(" was rated with ");
                 message.append(rating.toString());
@@ -43,33 +43,33 @@ public final class Rating {
                 message.append(user.getUsername());
             }
         } else {
-            message.append("error -> ");
+            message.append(ERROR);
             message.append(title);
             message.append(" is not seen");
         }
     }
 
     /**
-     * @param user
-     * @param serial
-     * @param rating
-     * @param season
+     * Method for the Rating Serial Command
+     *
+     * @param user   - the one that is rating
+     * @param serial - the one that had the season rated
+     * @param rating - the grade
+     * @param season - the one that is rated
      */
     public void rateSerial(final UserInputData user, final SerialInputData serial,
-                           final Double rating, final int season) {
+                           final Double rating, final Integer season) {
         String title = serial.getTitle();
         if (user.getHistory().containsKey(title)) {
-            if (user.getRatedShows().containsKey(title)
-                /*&& user.getRatedShows().get(title).contains(season)*/) {
-                message.append("error -> ");
+            if (user.getRatedShows().contains(title + season.toString())) {
+                message.append(ERROR);
                 message.append(title);
                 message.append(" has been already rated");
             } else {
-                List<Integer> list = new ArrayList<Integer>();
-                list.add(season);
-                user.getRatedShows().put(title, list);
-                // add to season ratings
-                message.append("success -> ");
+                user.getRatedShows().add(title + season.toString());
+                /* Here I should have calculated the new rating for the season, then for
+                    the serial, but somehow I cannot access each season. */
+                message.append(SUCCESS);
                 message.append(title);
                 message.append(" was rated with ");
                 message.append(rating.toString());
@@ -77,7 +77,7 @@ public final class Rating {
                 message.append(user.getUsername());
             }
         } else {
-            message.append("error -> ");
+            message.append(ERROR);
             message.append(title);
             message.append(" is not seen");
         }

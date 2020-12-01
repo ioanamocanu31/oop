@@ -5,15 +5,22 @@ import fileio.MovieInputData;
 import fileio.SerialInputData;
 import fileio.UserInputData;
 
+import static common.Constants.STANDARDRESULT;
+
+/**
+ * Class for the Standard Recommendation
+ */
 public final class Standard {
     /**
      * Message to be parsed to fileWriter.writeFile
      */
-    private final StringBuilder message = new StringBuilder("StandardRecommendation result: ");
+    private final StringBuilder message = new StringBuilder(STANDARDRESULT);
 
     /**
-     * @param user
-     * @param input
+     * Method that recommends to a user the first unseen show's title
+     *
+     * @param user  - for whom the recommendation is made
+     * @param input - the database
      */
     public void getUnseen(final UserInputData user, final Input input) {
         for (MovieInputData movie : input.getMovies()

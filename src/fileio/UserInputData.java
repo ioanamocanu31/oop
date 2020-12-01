@@ -1,7 +1,6 @@
 package fileio;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,10 +29,8 @@ public final class UserInputData {
 
     /**
      * Movies and serials rated by the user
-     * The key is the show title and
-     * the value is set 0 for the movies and the season number for the serial.
      */
-    private final Map<String, List<Integer>> ratedShows = new HashMap<String, List<Integer>>();
+    private final List<String> ratedShows = new ArrayList<String>();
 
     public UserInputData(final String username, final String subscriptionType,
                          final Map<String, Integer> history,
@@ -60,7 +57,7 @@ public final class UserInputData {
         return favoriteMovies;
     }
 
-    public Map<String, List<Integer>> getRatedShows() {
+    public List<String> getRatedShows() {
         return ratedShows;
     }
 

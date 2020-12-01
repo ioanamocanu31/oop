@@ -9,13 +9,18 @@ import fileio.UserInputData;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Class for the Search Recommendation
+ */
 public final class Search {
-    private ArrayList<String> videos = new ArrayList<String>();
+    private final ArrayList<String> videos = new ArrayList<String>();
 
     /**
-     * @param user
-     * @param show
-     * @param genre
+     * Method that is searching all unseen shows that have the specific genre passed as filter
+     *
+     * @param user - for whom the recommendation is made
+     * @param show - movie/serial
+     * @param genre - filter
      */
     public void searchShow(final UserInputData user, final ShowInput show, final String genre) {
         String title = show.getTitle();
@@ -26,9 +31,11 @@ public final class Search {
     }
 
     /**
-     * @param user
-     * @param input
-     * @param genre
+     * Method that applies searchShow for each type of show
+     *
+     * @param user - for whom the recommendation is made
+     * @param input - the database
+     * @param genre - filter
      */
     public void search(final UserInputData user, final Input input, final String genre) {
         for (MovieInputData movie : input.getMovies()
@@ -42,7 +49,7 @@ public final class Search {
     }
 
     /**
-     *
+     * Method that sorts the videos already found
      */
     public void sort() {
         Collections.sort(videos);

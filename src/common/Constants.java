@@ -46,7 +46,7 @@ public final class Constants {
     public static final String SEASON = "season";
     public static final String GRADE = "grade";
     public static final String AWARDS = "awards";
-    public static final String NUM_RATINGS = "num_ratings";
+    //    public static final String NUM_RATINGS = "num_ratings";
     public static final String FILTER_DESCRIPTIONS = "filter_description";
     public static final String WORDS = "words";
     public static final String REVIEWS = "reviews";
@@ -76,5 +76,17 @@ public final class Constants {
 
     // add any constants you think you may use
     public static final int THREE = 3;
-
+    public static final String VIEW = "view";
+    public static final String FAVORITE = "favorite";
+    public static final String RATING = "rating";
+    public static final String SUCCESS = "success -> ";
+    public static final String ERROR = "error -> ";
+    public static final String LONGEST = "longest";
+    public static final String MOSTVIEWED = "most_viewed";
+    public static final String RATINGS = "ratings";
+    public static final String QRESULT = "Query result: ";
+    public static final String STANDARDRESULT = "StandardRecommendation result: ";
+    public static final String STANDARD = "standard";
+    public static final String SEARCH = "search";
+    public static final String PREMIUM = "PREMIUM";
 }

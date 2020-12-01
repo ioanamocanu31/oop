@@ -8,12 +8,16 @@ import fileio.UserInputData;
 
 import java.util.ArrayList;
 
-
+/**
+ * Class for the MostViewed Video Query
+ */
 public final class MostViewed {
-    private ArrayList<String> mostViewed = new ArrayList<String>();
+    private final ArrayList<String> mostViewed = new ArrayList<String>();
 
     /**
-     * @param input
+     * Method that calculates views for the shows
+     *
+     * @param input - the database
      */
     public void calculateViews(final Input input) {
         for (MovieInputData movie : input.getMovies()
@@ -37,12 +41,15 @@ public final class MostViewed {
     }
 
     /**
-     * @param input
-     * @param action
+     * Method that set the MostViewed Shows with the certain filters
+     *
+     * @param input  - database
+     * @param action - current action
      */
     public void setMostViewed(final Input input, final ActionInputData action) {
         for (MovieInputData movie : input.getMovies()
         ) {
+            /* checking for the action filters */
             if ((movie.getYear().toString()).equals(action.getFilters().get(0).get(0))
                     && movie.getGenres().contains(action.getFilters().get(1).get(0))
                     && movie.getViews() != 0) {
@@ -51,6 +58,7 @@ public final class MostViewed {
         }
         for (SerialInputData serial : input.getSerials()
         ) {
+            /* checking for the action filters */
             if ((serial.getYear().toString()).equals(action.getFilters().get(0).get(0))
                     && serial.getGenres().contains(action.getFilters().get(1).get(0))
                     && serial.getViews() != 0) {

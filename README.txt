@@ -3,6 +3,8 @@
 // Object Oriented Programming Course
 // Mocanu Ioana - 321 CD
 // 1 December 2020
+// Git repo : https://github.com/ioanamocanu31/oop
+
 
 # Info
 https://ocw.cs.pub.ro/courses/poo-ca-cd/teme/tema
